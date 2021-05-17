@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package techschool.pcbook;
+option java_multiple_files = true;
+option java_package = "com.gitlab.techschool.pcbook.pb";
+
+message Memory {
+//  定义枚举类, 默认值是第一个定义的枚举值，该值必须为0
+  enum Unit {
+    UNKNOWN = 0;
+    BIT = 1;
+    BYTE = 2;
+    KILOBYTE = 3;
+    MEGABYTE = 4;
+    GIGABYTE = 5;
+    TERABYTE = 6;
+  }
+
+  uint32 value = 1;
+  Unit unit = 2;
+}
