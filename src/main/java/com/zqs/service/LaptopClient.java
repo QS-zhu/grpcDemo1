@@ -19,12 +19,16 @@ public class LaptopClient {
     private final ManagedChannel channel;
     private final LaptopServiceGrpc.LaptopServiceBlockingStub blockingStub;
 
-    // 初始化客户端
+    /** 初始化客户端
+     *
+     * 参数说明:
+     *  usePlaintext表示明文传输，否则需要配置ssl
+     *  newBlockingStub表示阻塞存根，意味着 RPC 调用要等待服务器应答，将会返回一个应答或抛出一个异常
+     */
     public LaptopClient(String host, int port) {
         channel = ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext()
                 .build();
-
         blockingStub = LaptopServiceGrpc.newBlockingStub(channel);
     }
 
